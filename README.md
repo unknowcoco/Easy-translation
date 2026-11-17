@@ -28,7 +28,7 @@
 2. 解压到任意目录（例如 `D:\Tools\EasyTranslation`）。
 3. 双击 `EasyTranslation.exe`。程序会常驻系统托盘，不弹主窗口。
 
-发布包是**自包含单文件**（约 63 MB），不需要预装 .NET，也不需要管理员权限。
+发布包是**自包含文件夹**（解压后约 147 MB），不需要预装 .NET，也不需要管理员权限。请解压后运行 `EasyTranslation.exe`；整个文件夹要保留，不要只把 exe 单独拷出来。
 
 > 首次运行可能遇到 SmartScreen /「Windows 已保护你的电脑」，见下方 [SmartScreen 与杀毒软件](#smartscreen-与杀毒软件)。发布包没有代码签名证书，这个提示属于预期。
 
@@ -40,7 +40,7 @@
 # 构建 + 86 个单元测试 + 发布（框架依赖单文件，需 .NET 8 Desktop Runtime）
 powershell -ExecutionPolicy Bypass -File .\build.ps1
 
-# 想要和 Releases 一样的自包含版本（约 63 MB，无需 .NET）
+# 想要和 Releases 一样的自包含版本（约 147 MB 文件夹，无需 .NET）
 powershell -ExecutionPolicy Bypass -File .\build.ps1 -SelfContained
 
 # 安装到 %LOCALAPPDATA%\Programs\EasyTranslation 并创建开始菜单快捷方式

@@ -46,22 +46,20 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Publish self-contained single file
+      - name: Publish self-contained folder
         run: >
           dotnet publish src/EasyTranslation.App/EasyTranslation.App.csproj
           -c Release -r win-x64 --self-contained true
-          -p:PublishSingleFile=true
-          -p:IncludeNativeLibrariesForSelfExtract=true
-          -p:EnableCompressionInSingleFile=true
+          -p:PublishSingleFile=false
           -p:DebugType=None
           -p:DebugSymbols=false
-          -o dist
+          -o dist/app
 
       - name: Create zip
         shell: pwsh
         run: |
           $version = "${{ github.ref_name }}"
-          Compress-Archive -Path dist/EasyTranslation.exe -DestinationPath "EasyTranslation-$version-win-x64.zip"
+          Compress-Archive -Path dist/app/* -DestinationPath "EasyTranslation-$version-win-x64.zip"
 
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2

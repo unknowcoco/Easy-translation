@@ -17,7 +17,7 @@ $source = Join-Path $repo 'publish'
 $exeName = 'EasyTranslation.exe'
 $exe = Join-Path $source $exeName
 if (-not (Test-Path $exe)) {
-    throw "找不到 $exe。请先在仓库根目录运行 build.ps1（或 dotnet publish src/EasyTranslation.App -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true -o publish）。"
+    throw "找不到 $exe。请先在仓库根目录运行 build.ps1 -SelfContained（发布自包含文件夹到 publish）。"
 }
 
 $target = Join-Path $env:LOCALAPPDATA 'Programs\EasyTranslation'

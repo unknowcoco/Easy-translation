@@ -13,8 +13,8 @@
 | Chrome E2E | `powershell -File tests/e2e/chrome-e2e.ps1` | 0.1.0 **3/3**；0.2.0 **1/1**：网页 textarea 整行拖选→右键→浮条→点击→内容变为 `[En] 你好，世界，这是一个测试。` |
 | 安装 / 卸载 | 0.1.0：`install.ps1`、`uninstall.ps1 -KeepData`、再 `install.ps1`；0.2.0：`install.ps1 -NoStart` → 检查目录/快捷方式 → `uninstall.ps1 -KeepData` | 通过：0.2.0 安装到 `%LOCALAPPDATA%\Programs\EasyTranslation` 并创建「Easy translation.lnk」；卸载清理新旧程序目录与快捷方式，`-KeepData` 保留 `%APPDATA%\Zh2En` 旧配置 |
 | 设置窗渲染 | `EasyTranslation.exe --echo --settings` + 截图 | 通过：服务商/语言/行为/高级/保存取消均可见；标题「Easy translation 设置」 |
-| 发布（框架依赖） | `build.ps1` | 单文件 `publish\EasyTranslation.exe` |
-| 发布（自包含） | `build.ps1 -SelfContained` | 单文件 `publish\EasyTranslation.exe`，约 **63 MB**，签名 **Valid** |
+| 发布（框架依赖） | `build.ps1` | 单文件 `publish\EasyTranslation.exe`（需 .NET 8 Desktop Runtime） |
+| 发布（自包含） | `build.ps1 -SelfContained` | 文件夹 `publish\`（243 个文件，约 **147 MB**），签名 **Valid** |
 | 签名 | `sign.ps1` + `Get-AuthenticodeSignature` | 通过：`CN=Easy translation Local Signing`（Thumbprint `F44E1773A7F37D0360C69F9E3F9ECE8FF1FB7E12`），仅本机 `TrustedPeople` 信任 |
 
 E2E 脚本要点：必须 UTF-8 with BOM；拖选使用 `mouse_event(MOUSEEVENTF_MOVE)` 相对移动，因为 `SetCursorPos` 不会触发 `WH_MOUSE_LL`；Chrome 的 `--user-data-dir` 不能含空格，测试页 URL 要用绝对 `file://` URI 且不加引号；运行 Chrome E2E 前脚本会结束已有 Chrome，并按窗口标题 `EasyTranslation E2E` 定位测试页。

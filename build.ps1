@@ -1,4 +1,4 @@
-﻿# 构建、测试并发布 Easy translation
+# 构建、测试并发布 Easy translation
 param(
     [switch]$SelfContained
 )
@@ -11,10 +11,9 @@ dotnet test tests/EasyTranslation.Tests/EasyTranslation.Tests.csproj -c Release 
 if ($LASTEXITCODE -ne 0) { throw '单元测试失败。' }
 
 if ($SelfContained) {
-    Write-Host '== 发布（自包含单文件，x64，约 150 MB）=='
+    Write-Host '== 发布（自包含文件夹，x64，约 147 MB，免装 .NET）=='
     dotnet publish src/EasyTranslation.App/EasyTranslation.App.csproj -c Release -r win-x64 --self-contained true `
-        -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true `
-        -p:DebugType=None -p:DebugSymbols=false -o publish -v q -nologo
+        -p:PublishSingleFile=false -p:DebugType=None -p:DebugSymbols=false -o publish -v q -nologo
 }
 else {
     Write-Host '== 发布（框架依赖单文件，x64，需 .NET 8 Desktop Runtime）=='

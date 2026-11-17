@@ -29,7 +29,7 @@ Select text in **any Windows app or browser**, right-click, and click the floati
 2. Extract it anywhere.
 3. Run `EasyTranslation.exe`. It stays in the system tray.
 
-The release is a **self-contained single file** (~63 MB): no .NET installation and no administrator rights required.
+The release is a **self-contained folder** (~147 MB unzipped): no .NET installation and no administrator rights required.
 
 Windows SmartScreen may warn about an unsigned executable. See [SmartScreen](#smartscreen) below.
 
@@ -39,7 +39,7 @@ Requires the [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) on W
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\build.ps1                 # framework-dependent
-powershell -ExecutionPolicy Bypass -File .\build.ps1 -SelfContained  # ~63 MB, no .NET needed
+powershell -ExecutionPolicy Bypass -File .\build.ps1 -SelfContained  # ~147 MB folder, no .NET needed
 powershell -ExecutionPolicy Bypass -File .\install\install.ps1       # install to %LOCALAPPDATA%\Programs\EasyTranslation
 ```
 
