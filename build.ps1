@@ -1,4 +1,4 @@
-# 构建、测试并发布 Easy translation
+﻿# 构建、测试并发布 Easy translation
 param(
     [switch]$SelfContained
 )
