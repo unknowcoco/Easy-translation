@@ -1,0 +1,87 @@
+name: Bug 报告
+description: 反馈一个问题或异常行为
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈。提交前请先搜索已有 issue，并确认使用的是最新版本。
+        日志里不会记录原文，但可能包含窗口类名/句柄，贴之前可以自己过一遍。
+
+  - type: input
+    id: version
+    attributes:
+      label: 版本与下载方式
+      description: 例如 v0.2.0 Release zip、自己 build.ps1 构建、安装版
+      placeholder: v0.2.0 / Release zip
+    validations:
+      required: true
+
+  - type: dropdown
+    id: windows
+    attributes:
+      label: Windows 版本
+      options:
+        - Windows 11
+        - Windows 10 22H2
+        - Windows 10 1809–21H2
+        - Windows 10 更早版本
+        - 其他（请在下方说明）
+    validations:
+      required: true
+
+  - type: input
+    id: target
+    attributes:
+      label: 出问题的软件
+      description: 浏览器 / 微信 / WPS / 记事本 / 某个网页……
+      placeholder: Chrome 157 网页 textarea
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      description: 越具体越好：选中什么文字、在哪里右键、点了什么
+      placeholder: |
+        1. 打开 …
+        2. 输入「…」并选中
+        3. 右键，点浮条
+        4. …
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望结果
+      placeholder: 选中的文字变成英文
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际结果
+      description: 浮条没出现 / 文字没变 / 报错提示 / 剪贴板被改掉……
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 日志（可选）
+      description: 位置 `%APPDATA%\EasyTranslation\logs\app-*.log`。用 `--debug` 启动可得到更详细日志。
+      render: text
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 确认
+      options:
+        - label: 我已搜索过现有 issue
+          required: true
+        - label: 我使用的是最新 Release 或最新 main 分支构建
+          required: true

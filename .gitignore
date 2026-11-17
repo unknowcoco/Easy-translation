@@ -1,0 +1,31 @@
+# Build output
+bin/
+obj/
+publish/
+dist/
+*.user
+*.suo
+.vs/
+
+# Runtime data (created next to the exe when %APPDATA% is not writable)
+data/
+logs/
+*.bad
+diagnose.txt
+
+# Local test / screenshot artifacts
+e2e-sample.txt
+e2e-result.json
+icon-check.png
+settings-shot.png
+settings-langs.png
+.tmp/
+.bundle/
+
+# Local signing material (never commit certificates or private keys)
+install/*.cer
+*.pfx
+
+# OS
+Thumbs.db
+Desktop.ini
