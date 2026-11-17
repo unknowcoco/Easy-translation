@@ -30,7 +30,7 @@ jobs:
         run: dotnet build EasyTranslation.sln -c Release --no-restore --nologo
 
       - name: Unit tests
-        run: dotnet test tests/EasyTranslation.Tests/EasyTranslation.Tests.csproj -c Release --no-build --nologo -v minimal
+        run: dotnet test tests/EasyTranslation.Tests/EasyTranslation.Tests.csproj -c Release --nologo -v minimal
 
   release:
     name: Package release
